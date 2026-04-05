@@ -10,7 +10,7 @@
   <link rel="apple-touch-icon" sizes="180x180" href="https://dashing-torrone-0b3dbf.netlify.app/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -318,7 +318,7 @@
     <!-- Text content — vertically centered in upper portion -->
     <div class="flex-1 flex flex-col items-center justify-center px-6 pt-8 pb-5 relative z-10">
       <div class="max-w-[1100px] w-full text-center">
-        <h1 class="text-[52px] md:text-[70px] font-[560] tracking-[-0.046em] text-[#09090b] leading-[0.945] mb-6">
+        <h1 class="text-[52px] md:text-[70px] tracking-[-0.025em] text-[#09090b] leading-[1.0] mb-6" style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;">
           Stop managing sales<br class="hidden sm:block"> in messy spreadsheets
         </h1>
         <p class="text-[17px] text-[#71717a] leading-[1.65] max-w-[430px] mx-auto mb-9">
@@ -375,38 +375,38 @@
         <span class="text-[#09090b]">A simpler way to manage deals.</span>
         <span class="text-[#a1a1aa]"> For small teams who outgrew their spreadsheet but don't need a complex CRM.</span>
       </h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:grid-rows-2">
+      <div class="flex flex-col gap-4">
 
-        <!-- Card 1 — featured, spans 2 rows on left -->
-        <div class="card-lifted rounded-[14px] overflow-hidden flex flex-col md:row-span-2">
-          <div class="overflow-hidden bg-[#f8f8fa] flex-1" style="border-bottom:1px solid rgba(0,0,0,0.06);">
-            <img src="https://dashing-torrone-0b3dbf.netlify.app/img-dashboard.png" class="w-full block h-full object-cover object-top" alt="Dashboard">
-          </div>
-          <div class="p-6 flex flex-col gap-2">
-            <div class="text-[14px] font-semibold text-[#09090b]">Clear pipeline view</div>
+        <!-- Card 1 — featured, full-width horizontal -->
+        <div class="card-lifted rounded-[14px] overflow-hidden flex flex-col md:flex-row">
+          <div class="p-7 flex flex-col justify-center md:w-[38%] flex-shrink-0">
+            <div class="text-[14px] font-semibold text-[#09090b] mb-2">Clear pipeline view</div>
             <div class="text-[13px] text-[#71717a] leading-[1.65]">Spreadsheets get messy as columns grow. Fluid gives you a visual board where every deal has a stage, value and a clear next step.</div>
           </div>
-        </div>
-
-        <!-- Card 2 — top right -->
-        <div class="card-lifted rounded-[14px] overflow-hidden flex flex-col md:col-span-2">
-          <div class="overflow-hidden bg-[#f8f8fa]" style="border-bottom:1px solid rgba(0,0,0,0.06);">
-            <img src="https://dashing-torrone-0b3dbf.netlify.app/img-reminder.png" class="w-full block" alt="Set reminder">
-          </div>
-          <div class="p-5 flex flex-col gap-1.5">
-            <div class="text-[13px] font-semibold text-[#09090b]">Never miss a follow-up</div>
-            <div class="text-[13px] text-[#71717a] leading-[1.6]">Prospects get buried in tabs and forgotten. Fluid shows you exactly what needs attention today, so no deal slips through the cracks.</div>
+          <div class="overflow-hidden bg-[#f8f8fa] flex-1" style="border-top:1px solid rgba(0,0,0,0.06);" class="md:border-top-0 md:border-left">
+            <img src="https://dashing-torrone-0b3dbf.netlify.app/img-dashboard.png" class="w-full block" alt="Dashboard">
           </div>
         </div>
 
-        <!-- Card 3 — bottom right -->
-        <div class="card-lifted rounded-[14px] overflow-hidden flex flex-col md:col-span-2">
-          <div class="overflow-hidden bg-[#f8f8fa]" style="border-bottom:1px solid rgba(0,0,0,0.06);">
-            <img src="https://dashing-torrone-0b3dbf.netlify.app/img-create-deal.png" class="w-full block" alt="Create deal">
+        <!-- Cards 2 & 3 — side by side -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="card-lifted rounded-[14px] overflow-hidden flex flex-col">
+            <div class="overflow-hidden bg-[#f8f8fa]" style="border-bottom:1px solid rgba(0,0,0,0.06);">
+              <img src="https://dashing-torrone-0b3dbf.netlify.app/img-reminder.png" class="w-full block" alt="Set reminder">
+            </div>
+            <div class="p-5 flex flex-col gap-1.5">
+              <div class="text-[13px] font-semibold text-[#09090b]">Never miss a follow-up</div>
+              <div class="text-[13px] text-[#71717a] leading-[1.6]">Prospects get buried in tabs and forgotten. Fluid shows you exactly what needs attention today, so no deal slips through the cracks.</div>
+            </div>
           </div>
-          <div class="p-5 flex flex-col gap-1.5">
-            <div class="text-[13px] font-semibold text-[#09090b]">Start tracking in minutes</div>
-            <div class="text-[13px] text-[#71717a] leading-[1.6]">No setup wizards, training sessions or onboarding calls. Sign up, create your first pipeline and start moving deals forward right away.</div>
+          <div class="card-lifted rounded-[14px] overflow-hidden flex flex-col">
+            <div class="overflow-hidden bg-[#f8f8fa]" style="border-bottom:1px solid rgba(0,0,0,0.06);">
+              <img src="https://dashing-torrone-0b3dbf.netlify.app/img-create-deal.png" class="w-full block" alt="Create deal">
+            </div>
+            <div class="p-5 flex flex-col gap-1.5">
+              <div class="text-[13px] font-semibold text-[#09090b]">Start tracking in minutes</div>
+              <div class="text-[13px] text-[#71717a] leading-[1.6]">No setup wizards, training sessions or onboarding calls. Sign up, create your first pipeline and start moving deals forward right away.</div>
+            </div>
           </div>
         </div>
 
