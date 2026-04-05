@@ -127,6 +127,20 @@
         0 56px 96px rgba(0,0,0,0.06);
     }
 
+    /* Feature image subtle hover */
+    .feat-img-hover {
+      transition: transform 0.55s cubic-bezier(0.23,1,0.32,1), box-shadow 0.55s cubic-bezier(0.23,1,0.32,1);
+    }
+    .feat-img-hover:hover {
+      transform: scale(1.012) translateY(-4px);
+      box-shadow:
+        0 0 0 1px rgba(0,0,0,0.04),
+        0 4px 8px  rgba(0,0,0,0.06),
+        0 12px 32px rgba(0,0,0,0.10),
+        0 32px 64px rgba(0,0,0,0.10),
+        0 64px 100px rgba(0,0,0,0.07);
+    }
+
     /* Feature section scroll reveal */
     .feat-reveal {
       opacity: 0;
@@ -326,7 +340,7 @@
           <p class="text-[19px] text-[#71717a] leading-[1.65]">Start your day right with a daily motivational quote and a clear view of active deals, overdue reminders and total pipeline value.</p>
         </div>
       </div>
-      <div class="img-frame feat-reveal">
+      <div class="img-frame feat-reveal feat-img-hover">
         <img src="https://dashing-torrone-0b3dbf.netlify.app/img-dashboard.png" class="w-full block" alt="Dashboard">
       </div>
     </div>
