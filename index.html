@@ -177,6 +177,19 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
+    /* ── Hero float animation ──────────────────────────────── */
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50%       { transform: translateY(-7px); }
+    }
+    .animate-float {
+      animation: float 6s ease-in-out infinite;
+    }
+    /* Pause float, then apply hover lift on top */
+    .animate-float:hover {
+      animation-play-state: paused;
+    }
+
     /* ── Section dividers ──────────────────────────────────── */
     .sep { border-color: rgba(0,0,0,0.05); }
 
@@ -222,17 +235,17 @@
 
       <!-- CTA -->
       <div class="mt-10 flex flex-col items-center gap-3">
-        <a href="#" class="bg-black text-white px-8 py-3 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 text-[15px] font-semibold inline-block">
+        <a href="#" class="bg-black hover:bg-gray-800 hover:-translate-y-0.5 hover:shadow-lg text-white px-8 py-3 rounded-lg shadow-md transition-all duration-300 text-[15px] font-semibold inline-block">
           Start Free Trial
         </a>
         <span class="text-sm text-gray-400">No credit card required</span>
       </div>
 
       <!-- Screenshot -->
-      <div class="mt-16 relative">
+      <div class="mt-16 relative max-w-6xl mx-auto">
         <img
           src="https://dashing-torrone-0b3dbf.netlify.app/img-pipeline.png"
-          class="w-full rounded-xl shadow-2xl relative z-10"
+          class="w-full rounded-xl shadow-2xl relative z-10 animate-float hover:-translate-y-2 hover:shadow-[0_40px_80px_rgba(0,0,0,0.15)] transition-all duration-500 ease-out"
           alt="Fluid CRM pipeline view"
         >
         <!-- Decorative blur ellipse beneath the screenshot -->
