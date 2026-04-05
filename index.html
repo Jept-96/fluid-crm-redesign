@@ -674,12 +674,16 @@
   </section>
 
   <!-- ─── FINAL CTA ─────────────────────────────────────────────── -->
-  <section class="py-28 px-6 border-t border-[rgba(0,0,0,0.05)] text-center">
-    <div class="max-w-[580px] mx-auto">
-      <h2 class="text-[42px] md:text-[54px] font-[540] tracking-[-0.04em] text-[#09090b] leading-[1.05] mb-5">Ready for calm sales tracking?</h2>
-      <p class="text-[17px] text-[#71717a] mb-10 leading-[1.65]">Get a clear visual pipeline without messy spreadsheets or complex CRMs.</p>
-      <div class="flex flex-col items-center gap-3">
-        <a href="#" class="btn-dark text-[14px] font-medium px-8 py-[11px] rounded-[9px]">Start Free Trial</a>
+  <section class="py-36 px-6 border-t border-[rgba(0,0,0,0.05)] text-center relative overflow-hidden">
+    <!-- Dot grid texture -->
+    <div class="absolute inset-0 pointer-events-none" style="background-image:radial-gradient(rgba(0,0,0,0.025) 1px,transparent 1px);background-size:24px 24px;-webkit-mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 20%,transparent 80%);mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 20%,transparent 80%);"></div>
+    <div class="max-w-[560px] mx-auto relative z-10">
+      <h2 class="text-[42px] md:text-[56px] font-[540] tracking-[-0.04em] text-[#09090b] leading-[1.02] mb-5">Ready for calm sales tracking?</h2>
+      <p class="text-[17px] text-[#71717a] mb-12 leading-[1.65]">Get a clear visual pipeline without messy spreadsheets or complex CRMs.</p>
+      <div class="flex flex-col items-center gap-3 relative">
+        <!-- Soft glow behind the button -->
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-16 pointer-events-none" style="background:radial-gradient(ellipse 100% 100% at 50% 50%,rgba(0,0,0,0.07) 0%,transparent 70%);filter:blur(18px);"></div>
+        <a href="#" class="btn-dark relative text-[15px] font-semibold px-10 py-[13px] rounded-[10px]">Start Free Trial</a>
         <span class="text-[13px] text-[#a1a1aa]">No credit card required</span>
       </div>
     </div>
