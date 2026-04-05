@@ -179,21 +179,15 @@
 
     /* ── Hero animations ───────────────────────────────────── */
     @keyframes heroFloat {
-      0%, 100% { transform: translateY(0px) rotate(0deg); }
-      25%       { transform: translateY(-8px) rotate(0.3deg); }
-      75%       { transform: translateY(-4px) rotate(-0.3deg); }
-    }
-    @keyframes shadowPulse {
-      0%, 100% { transform: scale(1);    opacity: 0.3; }
-      50%       { transform: scale(1.05); opacity: 0.5; }
+      0%, 100% { transform: translateY(0px); }
+      50%       { transform: translateY(-6px); }
     }
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0);    }
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
-    .hero-float  { animation: heroFloat   8s ease-in-out infinite; }
-    .hero-shadow { animation: shadowPulse 8s ease-in-out infinite; }
-    .fade-up     { animation: fadeUp 0.8s ease-out forwards; opacity: 0; }
+    .hero-float { animation: heroFloat 6s ease-in-out infinite; }
+    .hero-fade  { animation: fadeUp 0.7s ease-out forwards; opacity: 0; }
 
     /* ── Section dividers ──────────────────────────────────── */
     .sep { border-color: rgba(0,0,0,0.05); }
@@ -228,36 +222,30 @@
   <section class="bg-white min-h-screen flex flex-col justify-center px-6 pt-[52px] pb-16 text-center" id="product">
     <div class="max-w-[1100px] mx-auto w-full">
 
-      <!-- Headline -->
-      <h1 class="fade-up text-5xl md:text-6xl font-bold leading-tight text-gray-900 tracking-tight"
-          style="animation-delay:0s;">
-        Stop managing sales in<br>messy spreadsheets
-      </h1>
-
-      <!-- Subtitle -->
-      <p class="fade-up text-lg text-gray-500 max-w-xl mx-auto mt-6 leading-relaxed"
-         style="animation-delay:0.15s;">
-        Track everything in a clear visual pipeline without switching to a complex CRM.
-      </p>
-
-      <!-- CTA -->
-      <div class="fade-up mt-10 flex flex-col items-center gap-3"
-           style="animation-delay:0.3s;">
-        <a href="#" class="bg-black hover:bg-gray-800 hover:-translate-y-0.5 hover:shadow-lg text-white px-8 py-3 rounded-lg shadow-md transition-all duration-300 text-[15px] font-semibold inline-block">
-          Start Free Trial
-        </a>
-        <span class="text-sm text-gray-400">No credit card required</span>
+      <!-- Headline + subtitle + CTA fade in together -->
+      <div class="hero-fade">
+        <h1 class="text-5xl md:text-6xl font-bold leading-tight text-gray-900 tracking-tight">
+          Stop managing sales in<br>messy spreadsheets
+        </h1>
+        <p class="text-lg text-gray-500 max-w-xl mx-auto mt-6 leading-relaxed">
+          Track everything in a clear visual pipeline without switching to a complex CRM.
+        </p>
+        <div class="mt-10 flex flex-col items-center gap-3">
+          <a href="#" class="bg-black hover:bg-gray-800 hover:-translate-y-0.5 hover:shadow-lg text-white px-8 py-3 rounded-lg shadow-md transition-all duration-300 text-[15px] font-semibold inline-block">
+            Start Free Trial
+          </a>
+          <span class="text-sm text-gray-400">No credit card required</span>
+        </div>
       </div>
 
-      <!-- Screenshot -->
-      <div class="fade-up mt-14 max-w-6xl mx-auto" style="animation-delay:0.5s;">
+      <!-- Screenshot — gentle float, static soft shadow beneath -->
+      <div class="mt-14 max-w-6xl mx-auto">
         <img
           src="https://dashing-torrone-0b3dbf.netlify.app/img-pipeline.png"
           class="hero-float w-full rounded-xl shadow-2xl relative z-10 hover:-translate-y-2 hover:shadow-[0_40px_80px_rgba(0,0,0,0.15)] transition-shadow duration-500 ease-out"
           alt="Fluid CRM pipeline view"
         >
-        <!-- Animated shadow ellipse beneath the screenshot -->
-        <div class="hero-shadow w-4/5 h-8 bg-black/10 blur-2xl rounded-full mx-auto"></div>
+        <div class="w-4/5 h-8 bg-black/10 blur-2xl rounded-full mx-auto opacity-40"></div>
       </div>
 
     </div>
