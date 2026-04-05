@@ -236,6 +236,61 @@
 
     /* Responsive image overflow clip for hero */
     .hero-screenshot-wrap { position: relative; max-width: 1140px; margin: 0 auto; }
+
+    /* Feature modal */
+    .feat-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      opacity: 0;
+      transition: opacity 0.22s ease;
+      pointer-events: none;
+    }
+    .feat-modal-overlay.is-open {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .feat-modal-panel {
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      max-width: 860px;
+      width: 100%;
+      box-shadow: 0 0 0 1px rgba(0,0,0,0.08), 0 32px 80px rgba(0,0,0,0.22);
+      transform: translateY(20px) scale(0.97);
+      transition: transform 0.35s cubic-bezier(0.23,1,0.32,1);
+    }
+    .feat-modal-overlay.is-open .feat-modal-panel {
+      transform: translateY(0) scale(1);
+    }
+    .feat-modal-close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.06);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      color: #71717a;
+      transition: background 0.15s;
+      z-index: 10;
+    }
+    .feat-modal-close:hover { background: rgba(0,0,0,0.11); color: #09090b; }
+    .feat-card-clickable { cursor: pointer; }
+    .feat-card-clickable:hover .img-frame { box-shadow: 0 0 0 1px rgba(0,0,0,0.04),0 4px 10px rgba(0,0,0,0.08),0 16px 40px rgba(0,0,0,0.12),0 40px 72px rgba(0,0,0,0.10),0 80px 120px rgba(0,0,0,0.07); }
   </style>
 </head>
 <body class="bg-white text-[#09090b]">
@@ -320,19 +375,21 @@
         <span class="text-[#09090b]">A simpler way to manage deals.</span>
         <span class="text-[#a1a1aa]"> For small teams who outgrew their spreadsheet but don't need a complex CRM.</span>
       </h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:grid-rows-2">
 
-        <div class="card-lifted rounded-[14px] overflow-hidden flex flex-col">
-          <div class="overflow-hidden bg-[#f8f8fa]" style="border-bottom:1px solid rgba(0,0,0,0.06);">
-            <img src="https://dashing-torrone-0b3dbf.netlify.app/img-dashboard.png" class="w-full block" alt="Dashboard">
+        <!-- Card 1 — featured, spans 2 rows on left -->
+        <div class="card-lifted rounded-[14px] overflow-hidden flex flex-col md:row-span-2">
+          <div class="overflow-hidden bg-[#f8f8fa] flex-1" style="border-bottom:1px solid rgba(0,0,0,0.06);">
+            <img src="https://dashing-torrone-0b3dbf.netlify.app/img-dashboard.png" class="w-full block h-full object-cover object-top" alt="Dashboard">
           </div>
-          <div class="p-5 flex flex-col gap-1.5">
-            <div class="text-[13px] font-semibold text-[#09090b]">Clear pipeline view</div>
-            <div class="text-[13px] text-[#71717a] leading-[1.6]">Spreadsheets get messy as columns grow. Fluid gives you a visual board where every deal has a stage, value and a clear next step.</div>
+          <div class="p-6 flex flex-col gap-2">
+            <div class="text-[14px] font-semibold text-[#09090b]">Clear pipeline view</div>
+            <div class="text-[13px] text-[#71717a] leading-[1.65]">Spreadsheets get messy as columns grow. Fluid gives you a visual board where every deal has a stage, value and a clear next step.</div>
           </div>
         </div>
 
-        <div class="card-lifted rounded-[14px] overflow-hidden flex flex-col">
+        <!-- Card 2 — top right -->
+        <div class="card-lifted rounded-[14px] overflow-hidden flex flex-col md:col-span-2">
           <div class="overflow-hidden bg-[#f8f8fa]" style="border-bottom:1px solid rgba(0,0,0,0.06);">
             <img src="https://dashing-torrone-0b3dbf.netlify.app/img-reminder.png" class="w-full block" alt="Set reminder">
           </div>
@@ -342,7 +399,8 @@
           </div>
         </div>
 
-        <div class="card-lifted rounded-[14px] overflow-hidden flex flex-col">
+        <!-- Card 3 — bottom right -->
+        <div class="card-lifted rounded-[14px] overflow-hidden flex flex-col md:col-span-2">
           <div class="overflow-hidden bg-[#f8f8fa]" style="border-bottom:1px solid rgba(0,0,0,0.06);">
             <img src="https://dashing-torrone-0b3dbf.netlify.app/img-create-deal.png" class="w-full block" alt="Create deal">
           </div>
@@ -401,31 +459,34 @@
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
-        <div>
+        <div class="feat-card-clickable" onclick="openFeatModal('https://dashing-torrone-0b3dbf.netlify.app/img-contacts.png','3.0 Contacts','Store your contacts, automatically','Create a deal and the contact is built for you. Start from contacts if you prefer. Either way, everything stays linked and stored in one place — no duplicate entries, no copy-pasting between tools.')">
           <div class="img-frame feat-img-hover mb-6">
             <img src="https://dashing-torrone-0b3dbf.netlify.app/img-contacts.png" class="w-full block" alt="Contacts">
           </div>
           <p class="feat-num mb-3">3.0 Contacts</p>
           <h3 class="text-[18px] font-[560] tracking-[-0.02em] text-[#09090b] leading-[1.2] mb-2">Store your contacts, automatically</h3>
           <p class="text-[14px] text-[#71717a] leading-[1.65]">Create a deal and the contact is built for you. Everything stays linked and stored in one place.</p>
+          <span class="inline-flex items-center gap-1 mt-3 text-[12px] text-[#a1a1aa]">View details <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6h7M6.5 3l3 3-3 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </div>
 
-        <div>
+        <div class="feat-card-clickable" onclick="openFeatModal('https://dashing-torrone-0b3dbf.netlify.app/img-forecast.png','4.0 Forecast','See how much revenue is coming in','Total pipeline value, expected revenue, deals closing this month and average deal size — all in one view. Stop guessing and start planning with real numbers.')">
           <div class="img-frame feat-img-hover mb-6">
             <img src="https://dashing-torrone-0b3dbf.netlify.app/img-forecast.png" class="w-full block" alt="Forecast">
           </div>
           <p class="feat-num mb-3">4.0 Forecast</p>
           <h3 class="text-[18px] font-[560] tracking-[-0.02em] text-[#09090b] leading-[1.2] mb-2">See how much revenue is coming in</h3>
           <p class="text-[14px] text-[#71717a] leading-[1.65]">Pipeline value, expected revenue, and average deal size — all in one view. Stop guessing.</p>
+          <span class="inline-flex items-center gap-1 mt-3 text-[12px] text-[#a1a1aa]">View details <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6h7M6.5 3l3 3-3 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </div>
 
-        <div>
+        <div class="feat-card-clickable" onclick="openFeatModal('https://dashing-torrone-0b3dbf.netlify.app/img-automations.png','5.0 Automations','Work smart to save time and energy','Eight in-app automations handle deal creation, stage changes and time-based follow-ups. Toggle what you need and focus on real conversations instead of manual busywork.')">
           <div class="img-frame feat-img-hover mb-6">
             <img src="https://dashing-torrone-0b3dbf.netlify.app/img-automations.png" class="w-full block" alt="Automations">
           </div>
           <p class="feat-num mb-3">5.0 Automations</p>
           <h3 class="text-[18px] font-[560] tracking-[-0.02em] text-[#09090b] leading-[1.2] mb-2">Work smart to save time and energy</h3>
           <p class="text-[14px] text-[#71717a] leading-[1.65]">Eight in-app automations handle the routine work so you can focus on real conversations.</p>
+          <span class="inline-flex items-center gap-1 mt-3 text-[12px] text-[#a1a1aa]">View details <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6h7M6.5 3l3 3-3 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </div>
 
       </div>
@@ -759,7 +820,38 @@
       </div>
     </div>
   </footer>
+  <!-- ─── FEATURE MODAL ───────────────────────────────────────── -->
+  <div class="feat-modal-overlay" id="featModal" onclick="if(event.target===this)closeFeatModal()">
+    <div class="feat-modal-panel">
+      <div class="relative">
+        <button class="feat-modal-close" onclick="closeFeatModal()">×</button>
+        <img id="featModalImg" src="" class="w-full block" alt="" style="max-height:480px;object-fit:cover;object-position:top;">
+      </div>
+      <div class="p-8">
+        <p class="feat-num mb-3" id="featModalNum"></p>
+        <h3 class="text-[26px] font-[560] tracking-[-0.025em] text-[#09090b] leading-[1.2] mb-3" id="featModalTitle"></h3>
+        <p class="text-[15px] text-[#71717a] leading-[1.7]" id="featModalDesc"></p>
+      </div>
+    </div>
+  </div>
 
+  <script>
+    function openFeatModal(img, num, title, desc) {
+      document.getElementById('featModalImg').src = img;
+      document.getElementById('featModalNum').textContent = num;
+      document.getElementById('featModalTitle').textContent = title;
+      document.getElementById('featModalDesc').textContent = desc;
+      document.getElementById('featModal').classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeFeatModal() {
+      document.getElementById('featModal').classList.remove('is-open');
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeFeatModal();
+    });
+  </script>
 
 </body>
 </html>
