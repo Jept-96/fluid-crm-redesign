@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fluid CRM - Visual Sales Pipeline for Small Teams</title>
+  <link rel="icon" type="image/x-icon" href="https://dashing-torrone-0b3dbf.netlify.app/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://dashing-torrone-0b3dbf.netlify.app/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="https://dashing-torrone-0b3dbf.netlify.app/favicon-192x192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://dashing-torrone-0b3dbf.netlify.app/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { accent: '#5e6ad2' }
+        }
+      }
+    }
+  </script>
+  <style>
+    * { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+    h1, h2, h3 { font-feature-settings: "cv01", "ss03", "cv11"; }
+
+    /* Nav */
+    .nav-glass {
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+
+    /* Buttons */
+    .btn-dark {
+      background: linear-gradient(160deg, #222228 0%, #2e2e38 100%);
+      color: #fff;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.22), inset 0 1px 0 rgba(255,255,255,0.07);
+      transition: opacity 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+      display: inline-block;
+    }
+    .btn-dark:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.18), inset 0 1px 0 rgba(255,255,255,0.07);
+    }
+    .btn-dark:active { transform: translateY(0); opacity: 1; }
+
+    /* Hero */
+    .hero-bg {
+      background:
+        radial-gradient(ellipse 110% 55% at 50% 115%, rgba(94,106,210,0.08) 0%, rgba(94,106,210,0.03) 45%, transparent 68%),
+        radial-gradient(ellipse 70% 40% at 15% 85%, rgba(140,140,170,0.04) 0%, transparent 60%);
+    }
+    .hero-grid {
+      background-image: radial-gradient(rgba(0,0,0,0.032) 1px, transparent 1px);
+      background-size: 28px 28px;
+      -webkit-mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, black 20%, transparent 75%);
+      mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, black 20%, transparent 75%);
+    }
+
+    /* Screenshot */
+    .screenshot-glow {
+      box-shadow:
+        0 0 0 1px rgba(0,0,0,0.07),
+        0 4px 8px rgba(0,0,0,0.05),
+        0 16px 40px rgba(0,0,0,0.07),
+        0 40px 80px rgba(0,0,0,0.07);
+    }
+
+    /* Cards */
+    .card-lifted {
+      background: #fff;
+      border: 1px solid rgba(0,0,0,0.07);
+      box-shadow: 0 1px 2px rgba(0,0,0,0.03), 0 4px 16px rgba(0,0,0,0.04), 0 12px 32px rgba(0,0,0,0.03);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .card-lifted:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.07), 0 20px 48px rgba(0,0,0,0.05);
+    }
+
+    /* Image frame */
+    .img-frame {
+      border: 1px solid rgba(0,0,0,0.07);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 6px 24px rgba(0,0,0,0.05), 0 16px 48px rgba(0,0,0,0.04);
+    }
+
+    /* Testimonial */
+    .testi-card {
+      background: #fff;
+      border: 1px solid rgba(0,0,0,0.07);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03), 0 6px 24px rgba(0,0,0,0.04);
+    }
+
+    /* Pricing */
+    .pricing-card {
+      background: #fff;
+      border: 1px solid rgba(0,0,0,0.08);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 32px rgba(0,0,0,0.05);
+      transition: box-shadow 0.2s ease;
+    }
+    .pricing-card:hover {
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05), 0 16px 48px rgba(0,0,0,0.08);
+    }
+
+    /* Section label */
+    .eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #a1a1aa;
+    }
+
+    /* Feature number */
+    .feat-num {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: #c0c0c8;
+    }
+
+    /* Check */
+    .chk { color: #4caf82; flex-shrink: 0; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(0,0,0,0.06); }
+    .faq-item summary {
+      cursor: pointer;
+      list-style: none;
+      padding: 1.375rem 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      user-select: none;
+      gap: 1.5rem;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-icon {
+      flex-shrink: 0;
+      font-size: 20px;
+      font-weight: 300;
+      line-height: 1;
+      color: #a1a1aa;
+      transition: transform 0.25s cubic-bezier(0.4,0,0.2,1);
+      margin-top: 1px;
+    }
+    .faq-item[open] .faq-icon { transform: rotate(45deg); }
+    .faq-body { padding-bottom: 1.375rem; padding-right: 3rem; }
+
+    html { scroll-behavior: smooth; }
+
+    /* Responsive image overflow clip for hero */
+    .hero-screenshot-wrap { position: relative; max-width: 1140px; margin: 0 auto; }
+  </style>
+</head>
+<body class="bg-white text-[#09090b]">
+
+  <!-- ─── NAV ──────────────────────────────────────────────────── -->
+  <nav class="nav-glass fixed top-0 left-0 right-0 z-50">
+    <div class="max-w-[1100px] mx-auto px-6 flex items-center justify-between h-[52px]">
+      <img src="https://dashing-torrone-0b3dbf.netlify.app/fluid-navbar-logo.png" alt="Fluid CRM" style="height:26px;width:auto;">
+      <div class="hidden md:flex items-center gap-7">
+        <a href="#product" class="text-[13px] text-[#71717a] hover:text-[#09090b] transition-colors">Product</a>
+        <a href="#pricing" class="text-[13px] text-[#71717a] hover:text-[#09090b] transition-colors">Pricing</a>
+        <a href="/blog" class="text-[13px] text-[#71717a] hover:text-[#09090b] transition-colors">Blog</a>
+      </div>
+      <div class="flex items-center gap-5">
+        <a href="/auth?mode=login" class="text-[13px] text-[#71717a] hover:text-[#09090b] transition-colors">Log in</a>
+        <a href="/auth?mode=signup" class="btn-dark text-[13px] px-4 py-[7px] rounded-[7px] font-medium">Get started</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ─── HERO ─────────────────────────────────────────────────── -->
+  <section class="hero-bg pt-[118px] pb-0 px-6 relative overflow-hidden" id="product">
+    <div class="hero-grid absolute inset-0 pointer-events-none"></div>
+
+    <div class="max-w-[1100px] mx-auto relative text-center">
+      <h1 class="text-[54px] md:text-[70px] font-[560] tracking-[-0.046em] text-[#09090b] leading-[0.945] mb-6">
+        Stop managing sales<br class="hidden sm:block"> in messy spreadsheets
+      </h1>
+      <p class="text-[17px] text-[#71717a] leading-[1.65] max-w-[430px] mx-auto mb-9">
+        Track everything in a clear visual pipeline without switching to a complex CRM.
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3 mb-14">
+        <a href="#" class="btn-dark text-[14px] font-medium px-[22px] py-[10px] rounded-[8px]">Start Free Trial</a>
+        <span class="text-[13px] text-[#a1a1aa]">No credit card required</span>
+      </div>
+    </div>
+
+    <!-- Screenshot -->
+    <div class="hero-screenshot-wrap px-4 sm:px-6">
+      <div style="position:absolute;inset-x:0;bottom:0;height:60%;background:radial-gradient(ellipse 65% 55% at 50% 120%,rgba(94,106,210,0.09) 0%,transparent 68%);pointer-events:none;"></div>
+      <img
+        src="https://dashing-torrone-0b3dbf.netlify.app/img-pipeline.png"
+        class="w-full block rounded-t-[14px] relative z-10 screenshot-glow"
+        alt="Fluid CRM pipeline view"
+      >
+    </div>
+  </section>
+
+  <!-- ─── THREE CARDS ───────────────────────────────────────────── -->
+  <section class="py-28 px-6 border-t border-[rgba(0,0,0,0.05)]" style="background:linear-gradient(to bottom,#f6f6f9,#ffffff);">
+    <div class="max-w-[1100px] mx-auto">
+      <h2 class="text-[38px] md:text-[48px] font-[540] tracking-[-0.038em] leading-[1.1] mb-16 max-w-[900px]">
+        <span class="text-[#09090b]">A simpler way to manage deals.</span>
+        <span class="text-[#a1a1aa]"> For small teams who outgrew their spreadsheet but don't need a complex CRM.</span>
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+
+        <div class="card-lifted rounded-[14px] overflow-hidden flex flex-col">
+          <div class="overflow-hidden bg-[#f8f8fa]" style="border-bottom:1px solid rgba(0,0,0,0.06);">
+            <img src="https://dashing-torrone-0b3dbf.netlify.app/img-dashboard.png" class="w-full block" alt="Dashboard">
+          </div>
+          <div class="p-5 flex flex-col gap-1.5">
+            <div class="text-[13px] font-semibold text-[#09090b]">Clear pipeline view</div>
+            <div class="text-[13px] text-[#71717a] leading-[1.6]">Spreadsheets get messy as columns grow. Fluid gives you a visual board where every deal has a stage, value and a clear next step.</div>
+          </div>
+        </div>
+
+        <div class="card-lifted rounded-[14px] overflow-hidden flex flex-col">
+          <div class="overflow-hidden bg-[#f8f8fa]" style="border-bottom:1px solid rgba(0,0,0,0.06);">
+            <img src="https://dashing-torrone-0b3dbf.netlify.app/img-reminder.png" class="w-full block" alt="Set reminder">
+          </div>
+          <div class="p-5 flex flex-col gap-1.5">
+            <div class="text-[13px] font-semibold text-[#09090b]">Never miss a follow-up</div>
+            <div class="text-[13px] text-[#71717a] leading-[1.6]">Prospects get buried in tabs and forgotten. Fluid shows you exactly what needs attention today, so no deal slips through the cracks.</div>
+          </div>
+        </div>
+
+        <div class="card-lifted rounded-[14px] overflow-hidden flex flex-col">
+          <div class="overflow-hidden bg-[#f8f8fa]" style="border-bottom:1px solid rgba(0,0,0,0.06);">
+            <img src="https://dashing-torrone-0b3dbf.netlify.app/img-create-deal.png" class="w-full block" alt="Create deal">
+          </div>
+          <div class="p-5 flex flex-col gap-1.5">
+            <div class="text-[13px] font-semibold text-[#09090b]">Start tracking in minutes</div>
+            <div class="text-[13px] text-[#71717a] leading-[1.6]">No setup wizards, training sessions or onboarding calls. Sign up, create your first pipeline and start moving deals forward right away.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FEATURE 1: DASHBOARD ─────────────────────────────────── -->
+  <section class="py-24 px-6 border-t border-[rgba(0,0,0,0.05)] bg-white">
+    <div class="max-w-[1100px] mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-start mb-14">
+        <div>
+          <p class="feat-num mb-3">1.0 Dashboard</p>
+          <h2 class="text-[38px] md:text-[44px] font-[540] tracking-[-0.035em] text-[#09090b] leading-[1.1]">Get clarity on your business, instantly</h2>
+        </div>
+        <div class="md:pt-10">
+          <p class="text-[19px] text-[#71717a] leading-[1.65]">Start your day right with a daily motivational quote and a clear view of active deals, overdue reminders and total pipeline value.</p>
+        </div>
+      </div>
+      <div class="img-frame">
+        <img src="https://dashing-torrone-0b3dbf.netlify.app/img-dashboard.png" class="w-full block" alt="Dashboard">
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FEATURE 2: DEALS ──────────────────────────────────────── -->
+  <section class="py-24 px-6 border-t border-[rgba(0,0,0,0.05)]" style="background:linear-gradient(to bottom,#f9f9fb,#ffffff);">
+    <div class="max-w-[1100px] mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-start mb-14">
+        <div>
+          <p class="feat-num mb-3">2.0 Deals</p>
+          <h2 class="text-[38px] md:text-[44px] font-[540] tracking-[-0.035em] text-[#09090b] leading-[1.1]">Close more deals, lose fewer leads</h2>
+        </div>
+        <div class="md:pt-10">
+          <p class="text-[19px] text-[#71717a] leading-[1.65]">Every deal keeps its contacts, notes and activity history in one place. Follow up fast with hotkeys and collaborate with your team to close more deals.</p>
+        </div>
+      </div>
+      <div class="img-frame">
+        <img src="https://dashing-torrone-0b3dbf.netlify.app/img-activity.png" class="w-full block" alt="Activity logging">
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FEATURE 3: CONTACTS ───────────────────────────────────── -->
+  <section class="py-24 px-6 border-t border-[rgba(0,0,0,0.05)] bg-white">
+    <div class="max-w-[1100px] mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-start mb-14">
+        <div>
+          <p class="feat-num mb-3">3.0 Contacts</p>
+          <h2 class="text-[38px] md:text-[44px] font-[540] tracking-[-0.035em] text-[#09090b] leading-[1.1]">Store your contacts, automatically</h2>
+        </div>
+        <div class="md:pt-10">
+          <p class="text-[19px] text-[#71717a] leading-[1.65]">Create a deal and the contact is built for you. Start from contacts if you prefer. Either way, everything stays linked and stored in one place.</p>
+        </div>
+      </div>
+      <div class="img-frame">
+        <img src="https://dashing-torrone-0b3dbf.netlify.app/img-contacts.png" class="w-full block" alt="Contacts">
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FEATURE 4: FORECAST ───────────────────────────────────── -->
+  <section class="py-24 px-6 border-t border-[rgba(0,0,0,0.05)]" style="background:linear-gradient(to bottom,#f9f9fb,#ffffff);">
+    <div class="max-w-[1100px] mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-start mb-14">
+        <div>
+          <p class="feat-num mb-3">4.0 Forecast</p>
+          <h2 class="text-[38px] md:text-[44px] font-[540] tracking-[-0.035em] text-[#09090b] leading-[1.1]">See how much revenue is coming in</h2>
+        </div>
+        <div class="md:pt-10">
+          <p class="text-[19px] text-[#71717a] leading-[1.65]">Total pipeline, expected revenue, closing this month and average deal size - all in one view. Stop guessing and start planning with real numbers.</p>
+        </div>
+      </div>
+      <div class="img-frame">
+        <img src="https://dashing-torrone-0b3dbf.netlify.app/img-forecast.png" class="w-full block" alt="Forecast">
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FEATURE 5: AUTOMATIONS ───────────────────────────────── -->
+  <section class="py-24 px-6 border-t border-[rgba(0,0,0,0.05)] bg-white">
+    <div class="max-w-[1100px] mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-start mb-14">
+        <div>
+          <p class="feat-num mb-3">5.0 Automations</p>
+          <h2 class="text-[38px] md:text-[44px] font-[540] tracking-[-0.035em] text-[#09090b] leading-[1.1]">Work smart to save time and energy</h2>
+        </div>
+        <div class="md:pt-10">
+          <p class="text-[19px] text-[#71717a] leading-[1.65]">Eight in-app automations handle deal creation, stage changes and time-based follow-ups. Toggle what you need and focus on real conversations.</p>
+        </div>
+      </div>
+      <div class="img-frame">
+        <img src="https://dashing-torrone-0b3dbf.netlify.app/img-automations.png" class="w-full block" alt="In-app automations">
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── COMPARISON TABLE ─────────────────────────────────────── -->
+  <section class="py-24 px-6 border-t border-[rgba(0,0,0,0.05)]" style="background:linear-gradient(to bottom,#f6f6f9,#ffffff);">
+    <div class="max-w-[1100px] mx-auto">
+      <div class="mb-12">
+        <p class="eyebrow mb-4">Comparison</p>
+        <h2 class="text-[38px] md:text-[46px] font-[540] tracking-[-0.035em] text-[#09090b] leading-[1.1] mb-4">Fluid vs. Spreadsheets vs. Traditional CRMs</h2>
+        <p class="text-[17px] text-[#71717a]">Three ways to track sales. Only one stays usable over time.</p>
+      </div>
+
+      <div class="rounded-[14px] overflow-hidden" style="border:1px solid rgba(0,0,0,0.07);box-shadow:0 1px 3px rgba(0,0,0,0.03),0 8px 32px rgba(0,0,0,0.04);">
+        <table class="w-full border-collapse text-[14px]">
+          <thead>
+            <tr>
+              <th class="w-[22%] p-4 text-left bg-white border-b border-[rgba(0,0,0,0.05)]"></th>
+              <th class="w-[26%] p-4 text-left bg-white border-b border-[rgba(0,0,0,0.05)]">
+                <span class="text-[13px] font-medium text-[#a1a1aa]">Spreadsheets</span>
+              </th>
+              <th class="w-[26%] p-4 text-left border-b border-[rgba(0,0,0,0.05)]" style="background:linear-gradient(to bottom,#f3f3f8,#f6f6fa);">
+                <img src="https://dashing-torrone-0b3dbf.netlify.app/fluid-comparison-logo.png" alt="Fluid" style="height:20px;width:auto;">
+              </th>
+              <th class="w-[26%] p-4 text-left bg-white border-b border-[rgba(0,0,0,0.05)]">
+                <span class="text-[13px] font-medium text-[#a1a1aa]">Traditional CRMs</span>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="p-4 text-[13px] font-medium text-[#09090b] bg-white border-b border-[rgba(0,0,0,0.04)]">Best for</td>
+              <td class="p-4 text-[13px] text-[#9897a0] bg-white border-b border-[rgba(0,0,0,0.04)]">Getting started quickly.</td>
+              <td class="p-4 text-[13px] text-[#09090b] font-[450] border-b border-[rgba(0,0,0,0.04)]" style="background:#f6f6fa;">Small teams that need clarity.</td>
+              <td class="p-4 text-[13px] text-[#9897a0] bg-white border-b border-[rgba(0,0,0,0.04)]">Large teams and reporting.</td>
+            </tr>
+            <tr>
+              <td class="p-4 text-[13px] font-medium text-[#09090b] bg-white border-b border-[rgba(0,0,0,0.04)]">Getting started</td>
+              <td class="p-4 text-[13px] text-[#9897a0] bg-white border-b border-[rgba(0,0,0,0.04)]">Open a sheet and start typing.</td>
+              <td class="p-4 text-[13px] text-[#09090b] font-[450] border-b border-[rgba(0,0,0,0.04)]" style="background:#f6f6fa;">Open it and start tracking.</td>
+              <td class="p-4 text-[13px] text-[#9897a0] bg-white border-b border-[rgba(0,0,0,0.04)]">Setup takes time and training.</td>
+            </tr>
+            <tr>
+              <td class="p-4 text-[13px] font-medium text-[#09090b] bg-white border-b border-[rgba(0,0,0,0.04)]">Staying organized</td>
+              <td class="p-4 text-[13px] text-[#9897a0] bg-white border-b border-[rgba(0,0,0,0.04)]">Gets messy as columns grow.</td>
+              <td class="p-4 text-[13px] text-[#09090b] font-[450] border-b border-[rgba(0,0,0,0.04)]" style="background:#f6f6fa;">Clear visual pipeline.</td>
+              <td class="p-4 text-[13px] text-[#9897a0] bg-white border-b border-[rgba(0,0,0,0.04)]">Too many features and rules.</td>
+            </tr>
+            <tr>
+              <td class="p-4 text-[13px] font-medium text-[#09090b] bg-white border-b border-[rgba(0,0,0,0.04)]">Follow-ups</td>
+              <td class="p-4 text-[13px] text-[#9897a0] bg-white border-b border-[rgba(0,0,0,0.04)]">Easy to forget or lose track of.</td>
+              <td class="p-4 text-[13px] text-[#09090b] font-[450] border-b border-[rgba(0,0,0,0.04)]" style="background:#f6f6fa;">See what's next.</td>
+              <td class="p-4 text-[13px] text-[#9897a0] bg-white border-b border-[rgba(0,0,0,0.04)]">Buried in clicks.</td>
+            </tr>
+            <tr>
+              <td class="p-4 text-[13px] font-medium text-[#09090b] bg-white border-b border-[rgba(0,0,0,0.04)]">Mental load</td>
+              <td class="p-4 text-[13px] text-[#9897a0] bg-white border-b border-[rgba(0,0,0,0.04)]">Hard to trust once things grow.</td>
+              <td class="p-4 text-[13px] text-[#09090b] font-[450] border-b border-[rgba(0,0,0,0.04)]" style="background:#f6f6fa;">Calm, simple, and easy to trust.</td>
+              <td class="p-4 text-[13px] text-[#9897a0] bg-white border-b border-[rgba(0,0,0,0.04)]">Feels like admin work.</td>
+            </tr>
+            <tr>
+              <td class="p-4 text-[13px] font-medium text-[#09090b] bg-white">Long-term fit</td>
+              <td class="p-4 text-[13px] text-[#9897a0] bg-white">Breaks over time.</td>
+              <td class="p-4 text-[13px] text-[#09090b] font-[450]" style="background:#f6f6fa;">Stays usable as things grow.</td>
+              <td class="p-4 text-[13px] text-[#9897a0] bg-white">Overkill for small teams.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-center text-[13px] text-[#9897a0] mt-6">Fluid sits between spreadsheets and full CRMs. Better structure than a sheet. Less friction than a traditional CRM.</p>
+    </div>
+  </section>
+
+  <!-- ─── TESTIMONIALS ─────────────────────────────────────────── -->
+  <section class="py-24 px-6 border-t border-[rgba(0,0,0,0.05)] bg-white">
+    <div class="max-w-[1100px] mx-auto">
+      <div class="text-center mb-14">
+        <p class="eyebrow mb-4">What people are saying</p>
+        <h2 class="text-[38px] md:text-[46px] font-[540] tracking-[-0.035em] text-[#09090b] leading-[1.1]">Loved by small teams</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+        <!-- Testimonial 1 -->
+        <div class="testi-card rounded-[14px] p-8 flex flex-col gap-6">
+          <div class="flex gap-0.5">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="#09090b"><path d="M7 0.5l1.6 3.3 3.6.52-2.6 2.54.61 3.6L7 8.6 3.79 10.46l.61-3.6L2 4.32l3.6-.52L7 0.5z"/></svg>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="#09090b"><path d="M7 0.5l1.6 3.3 3.6.52-2.6 2.54.61 3.6L7 8.6 3.79 10.46l.61-3.6L2 4.32l3.6-.52L7 0.5z"/></svg>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="#09090b"><path d="M7 0.5l1.6 3.3 3.6.52-2.6 2.54.61 3.6L7 8.6 3.79 10.46l.61-3.6L2 4.32l3.6-.52L7 0.5z"/></svg>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="#09090b"><path d="M7 0.5l1.6 3.3 3.6.52-2.6 2.54.61 3.6L7 8.6 3.79 10.46l.61-3.6L2 4.32l3.6-.52L7 0.5z"/></svg>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="#09090b"><path d="M7 0.5l1.6 3.3 3.6.52-2.6 2.54.61 3.6L7 8.6 3.79 10.46l.61-3.6L2 4.32l3.6-.52L7 0.5z"/></svg>
+          </div>
+          <p class="text-[16px] text-[#09090b] leading-[1.7] flex-1">"I switched from a spreadsheet I'd been using for two years. Within a week Fluid had replaced it completely. The pipeline view makes it so obvious where each deal stands — I spend less time thinking about what to do next and more time actually doing it."</p>
+          <div class="flex items-center gap-3 pt-4 border-t border-[rgba(0,0,0,0.06)]">
+            <div class="w-9 h-9 rounded-full bg-[#e8e8ec] flex items-center justify-center flex-shrink-0">
+              <span class="text-[12px] font-semibold text-[#71717a]">SL</span>
+            </div>
+            <div>
+              <div class="text-[13px] font-semibold text-[#09090b]">Sarah L.</div>
+              <div class="text-[12px] text-[#9897a0]">Founder, independent consulting firm</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="testi-card rounded-[14px] p-8 flex flex-col gap-6">
+          <div class="flex gap-0.5">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="#09090b"><path d="M7 0.5l1.6 3.3 3.6.52-2.6 2.54.61 3.6L7 8.6 3.79 10.46l.61-3.6L2 4.32l3.6-.52L7 0.5z"/></svg>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="#09090b"><path d="M7 0.5l1.6 3.3 3.6.52-2.6 2.54.61 3.6L7 8.6 3.79 10.46l.61-3.6L2 4.32l3.6-.52L7 0.5z"/></svg>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="#09090b"><path d="M7 0.5l1.6 3.3 3.6.52-2.6 2.54.61 3.6L7 8.6 3.79 10.46l.61-3.6L2 4.32l3.6-.52L7 0.5z"/></svg>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="#09090b"><path d="M7 0.5l1.6 3.3 3.6.52-2.6 2.54.61 3.6L7 8.6 3.79 10.46l.61-3.6L2 4.32l3.6-.52L7 0.5z"/></svg>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="#09090b"><path d="M7 0.5l1.6 3.3 3.6.52-2.6 2.54.61 3.6L7 8.6 3.79 10.46l.61-3.6L2 4.32l3.6-.52L7 0.5z"/></svg>
+          </div>
+          <p class="text-[16px] text-[#09090b] leading-[1.7] flex-1">"We tried HubSpot but it felt like overkill for a three-person team. Fluid is exactly what we needed — simple enough to get everyone on board in an afternoon, but powerful enough to handle our whole sales process. The follow-up reminders alone have been worth it."</p>
+          <div class="flex items-center gap-3 pt-4 border-t border-[rgba(0,0,0,0.06)]">
+            <div class="w-9 h-9 rounded-full bg-[#e8e8ec] flex items-center justify-center flex-shrink-0">
+              <span class="text-[12px] font-semibold text-[#71717a]">MR</span>
+            </div>
+            <div>
+              <div class="text-[13px] font-semibold text-[#09090b]">Marcus R.</div>
+              <div class="text-[12px] text-[#9897a0]">Co-founder, B2B software agency</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── PRICING ───────────────────────────────────────────────── -->
+  <section id="pricing" class="py-24 px-6 border-t border-[rgba(0,0,0,0.05)]" style="background:linear-gradient(to bottom,#f6f6f9,#ffffff);">
+    <div class="max-w-[1100px] mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-[38px] md:text-[46px] font-[540] tracking-[-0.035em] text-[#09090b] leading-[1.1] mb-4">Pricing</h2>
+        <p class="text-[17px] text-[#71717a]">Everything you need to get structure in your work. No upgrade traps.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-[780px] mx-auto">
+
+        <!-- Monthly -->
+        <div class="pricing-card rounded-[16px] p-8">
+          <div class="mb-6">
+            <div class="text-[15px] font-semibold text-[#09090b] mb-1">Monthly</div>
+            <div class="text-[13px] text-[#9897a0]">Pay as you go</div>
+          </div>
+          <div class="mb-8 flex items-baseline gap-1.5">
+            <span class="text-[52px] font-[300] tracking-[-0.04em] text-[#09090b] leading-none">€12</span>
+            <span class="text-[15px] text-[#9897a0]">/mo</span>
+          </div>
+          <ul class="flex flex-col gap-3 mb-8">
+            <li class="flex items-center gap-2.5 text-[13px] text-[#71717a]"><svg class="chk" width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M2.5 7.5l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"/></svg>Unlimited contacts</li>
+            <li class="flex items-center gap-2.5 text-[13px] text-[#71717a]"><svg class="chk" width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M2.5 7.5l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"/></svg>Unlimited pipelines</li>
+            <li class="flex items-center gap-2.5 text-[13px] text-[#71717a]"><svg class="chk" width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M2.5 7.5l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"/></svg>Instant reminders</li>
+            <li class="flex items-center gap-2.5 text-[13px] text-[#71717a]"><svg class="chk" width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M2.5 7.5l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"/></svg>Easy import and export</li>
+            <li class="flex items-center gap-2.5 text-[13px] text-[#71717a]"><svg class="chk" width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M2.5 7.5l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"/></svg>Custom fields (optional)</li>
+            <li class="flex items-center gap-2.5 text-[13px] text-[#71717a]"><svg class="chk" width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M2.5 7.5l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"/></svg>Keyboard shortcuts</li>
+            <li class="flex items-center gap-2.5 text-[13px] text-[#71717a]"><svg class="chk" width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M2.5 7.5l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"/></svg>API integration</li>
+          </ul>
+          <a href="#" class="btn-dark w-full text-center text-[13px] font-medium px-6 py-[10px] rounded-[8px] block">Start Free Trial</a>
+          <p class="text-[12px] text-[#9897a0] text-center mt-3">No credit card required. Cancel anytime.</p>
+        </div>
+
+        <!-- Annual -->
+        <div class="relative">
+          <div class="absolute -top-3 inset-x-0 flex justify-center z-10">
+            <span class="bg-[#09090b] text-white text-[11px] font-medium px-3 py-[5px] rounded-full">Best Value</span>
+          </div>
+          <div class="pricing-card rounded-[16px] p-8 h-full" style="border-color:rgba(0,0,0,0.12);">
+            <div class="mb-6">
+              <div class="text-[15px] font-semibold text-[#09090b] mb-1">Annual</div>
+              <div class="text-[13px] text-[#9897a0]">Save 4 months</div>
+            </div>
+            <div class="mb-8 flex items-baseline gap-1.5">
+              <span class="text-[52px] font-[300] tracking-[-0.04em] text-[#09090b] leading-none">€96</span>
+              <span class="text-[15px] text-[#9897a0]">/yr</span>
+            </div>
+            <ul class="flex flex-col gap-3 mb-8">
+              <li class="flex items-center gap-2.5 text-[13px] text-[#71717a]"><svg class="chk" width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M2.5 7.5l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"/></svg>Unlimited contacts</li>
+              <li class="flex items-center gap-2.5 text-[13px] text-[#71717a]"><svg class="chk" width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M2.5 7.5l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"/></svg>Unlimited pipelines</li>
+              <li class="flex items-center gap-2.5 text-[13px] text-[#71717a]"><svg class="chk" width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M2.5 7.5l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"/></svg>Instant reminders</li>
+              <li class="flex items-center gap-2.5 text-[13px] text-[#71717a]"><svg class="chk" width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M2.5 7.5l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"/></svg>Easy import and export</li>
+              <li class="flex items-center gap-2.5 text-[13px] text-[#71717a]"><svg class="chk" width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M2.5 7.5l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"/></svg>Custom fields (optional)</li>
+              <li class="flex items-center gap-2.5 text-[13px] text-[#71717a]"><svg class="chk" width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M2.5 7.5l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"/></svg>Keyboard shortcuts</li>
+              <li class="flex items-center gap-2.5 text-[13px] text-[#71717a]"><svg class="chk" width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M2.5 7.5l3.5 3.5 6.5-7" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"/></svg>API integration</li>
+            </ul>
+            <a href="#" class="btn-dark w-full text-center text-[13px] font-medium px-6 py-[10px] rounded-[8px] block">Start Free Trial</a>
+            <p class="text-[12px] text-[#9897a0] text-center mt-3">No credit card required. Cancel anytime.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FAQ ──────────────────────────────────────────────────── -->
+  <section class="py-24 px-6 border-t border-[rgba(0,0,0,0.05)] bg-white">
+    <div class="max-w-[680px] mx-auto">
+      <h2 class="text-[38px] md:text-[46px] font-[540] tracking-[-0.035em] text-[#09090b] leading-[1.1] mb-4">Frequently asked questions</h2>
+      <p class="text-[17px] text-[#71717a] mb-12">Everything you need to know before getting started.</p>
+      <div class="border-t border-[rgba(0,0,0,0.06)]">
+
+        <details class="faq-item">
+          <summary>
+            <span class="text-[15px] font-medium text-[#09090b]">Is Fluid a full CRM?</span>
+            <span class="faq-icon">+</span>
+          </summary>
+          <div class="faq-body">
+            <p class="text-[14px] text-[#71717a] leading-[1.75]">Fluid is a visual sales pipeline. It gives you the structure you need to track deals and follow-ups without the complexity of a traditional CRM. If you need advanced reporting, marketing automation, or enterprise features, Fluid probably isn't the right fit. If you need clarity and simplicity, it is.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>
+            <span class="text-[15px] font-medium text-[#09090b]">Can I import my data from a spreadsheet?</span>
+            <span class="faq-icon">+</span>
+          </summary>
+          <div class="faq-body">
+            <p class="text-[14px] text-[#71717a] leading-[1.75]">Yes. You can import contacts and deals from CSV files. The import takes a few minutes and maps your columns automatically.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>
+            <span class="text-[15px] font-medium text-[#09090b]">How is Fluid different from HubSpot or Pipedrive?</span>
+            <span class="faq-icon">+</span>
+          </summary>
+          <div class="faq-body">
+            <p class="text-[14px] text-[#71717a] leading-[1.75]">Those tools are built for large teams with dedicated sales ops. They come with a learning curve, setup time, and features most small teams never use. Fluid is intentionally simple - it does less, but what it does, it does well.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>
+            <span class="text-[15px] font-medium text-[#09090b]">Is there a free trial?</span>
+            <span class="faq-icon">+</span>
+          </summary>
+          <div class="faq-body">
+            <p class="text-[14px] text-[#71717a] leading-[1.75]">Yes. You get full access to everything for 14 days, no credit card required. If it helps you stay organized, upgrade. If not, no hard feelings.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>
+            <span class="text-[15px] font-medium text-[#09090b]">Can I use Fluid with my team?</span>
+            <span class="faq-icon">+</span>
+          </summary>
+          <div class="faq-body">
+            <p class="text-[14px] text-[#71717a] leading-[1.75]">Yes. Invite teammates, assign deals, and see everyone's pipeline in one place. No per-seat pricing traps.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>
+            <span class="text-[15px] font-medium text-[#09090b]">What happens to my data if I cancel?</span>
+            <span class="faq-icon">+</span>
+          </summary>
+          <div class="faq-body">
+            <p class="text-[14px] text-[#71717a] leading-[1.75]">You can export all your data anytime. Nothing gets locked in.</p>
+          </div>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FINAL CTA ─────────────────────────────────────────────── -->
+  <section class="py-28 px-6 border-t border-[rgba(0,0,0,0.05)] text-center" style="background:linear-gradient(to bottom,#f4f4f8,#ecedf4);">
+    <div class="max-w-[580px] mx-auto">
+      <h2 class="text-[42px] md:text-[54px] font-[540] tracking-[-0.04em] text-[#09090b] leading-[1.05] mb-5">Ready for calm sales tracking?</h2>
+      <p class="text-[17px] text-[#71717a] mb-10 leading-[1.65]">Get a clear visual pipeline without messy spreadsheets or complex CRMs.</p>
+      <div class="flex flex-col items-center gap-3">
+        <a href="#" class="btn-dark text-[14px] font-medium px-8 py-[11px] rounded-[9px]">Start Free Trial</a>
+        <span class="text-[13px] text-[#a1a1aa]">No credit card required</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ────────────────────────────────────────────────── -->
+  <footer class="border-t border-[rgba(0,0,0,0.06)] pt-16 px-6 bg-white">
+    <div class="max-w-[1100px] mx-auto">
+      <div class="flex flex-col md:flex-row justify-between gap-12 pb-12">
+
+        <div class="max-w-[360px]">
+          <div class="mb-4">
+            <img src="https://dashing-torrone-0b3dbf.netlify.app/fluid-footer-logo.png" alt="Fluid CRM" style="height:26px;width:auto;">
+          </div>
+          <p class="text-[13px] text-[#9897a0] leading-[1.65]">Fluid is a visual sales pipeline for small businesses that replaces messy spreadsheets without the complexity of a traditional CRM.</p>
+          <div class="flex items-center gap-3 mt-5">
+            <a href="#" class="text-[#c8c8d0] hover:text-[#71717a] transition-colors">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+            <a href="#" class="text-[#c8c8d0] hover:text-[#71717a] transition-colors">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="flex gap-16">
+          <div>
+            <div class="text-[11px] font-semibold text-[#09090b] uppercase tracking-[0.1em] mb-4">Product</div>
+            <div class="flex flex-col gap-3">
+              <a href="#" class="text-[13px] text-[#9897a0] hover:text-[#09090b] transition-colors">Features</a>
+              <a href="#pricing" class="text-[13px] text-[#9897a0] hover:text-[#09090b] transition-colors">Pricing</a>
+            </div>
+          </div>
+          <div>
+            <div class="text-[11px] font-semibold text-[#09090b] uppercase tracking-[0.1em] mb-4">Support</div>
+            <div class="flex flex-col gap-3">
+              <a href="#" class="text-[13px] text-[#9897a0] hover:text-[#09090b] transition-colors">Contact</a>
+              <a href="#" class="text-[13px] text-[#9897a0] hover:text-[#09090b] transition-colors">Docs</a>
+              <a href="#" class="text-[13px] text-[#9897a0] hover:text-[#09090b] transition-colors">Start Free Trial</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="border-t border-[rgba(0,0,0,0.05)] py-5 flex flex-col md:flex-row items-center justify-between gap-3">
+        <span class="text-[12px] text-[#9897a0]">© Fluid CRM 2026</span>
+        <div class="flex items-center gap-6">
+          <a href="#" class="text-[12px] text-[#9897a0] hover:text-[#09090b] transition-colors">Terms &amp; Conditions</a>
+          <a href="#" class="text-[12px] text-[#9897a0] hover:text-[#09090b] transition-colors">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
