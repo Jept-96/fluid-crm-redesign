@@ -177,17 +177,22 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* ── Hero animations ───────────────────────────────────── */
-    @keyframes heroFloat {
-      0%, 100% { transform: translateY(0px); }
-      50%       { transform: translateY(-6px); }
+    /* ── Hero dot grid ─────────────────────────────────────── */
+    .hero-dot-grid {
+      background-image: radial-gradient(circle, rgba(0,0,0,0.055) 1px, transparent 1px);
+      background-size: 24px 24px;
+      -webkit-mask-image: radial-gradient(ellipse 85% 65% at 50% 15%, rgba(0,0,0,0.55) 0%, transparent 75%);
+      mask-image: radial-gradient(ellipse 85% 65% at 50% 15%, rgba(0,0,0,0.55) 0%, transparent 75%);
     }
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(16px); }
-      to   { opacity: 1; transform: translateY(0); }
+    /* Hero screenshot — deep layered shadow */
+    .hero-screenshot-shadow {
+      box-shadow:
+        0 0 0 1px rgba(0,0,0,0.07),
+        0 4px 8px rgba(0,0,0,0.05),
+        0 16px 40px rgba(0,0,0,0.09),
+        0 40px 80px rgba(0,0,0,0.09),
+        0 80px 120px rgba(0,0,0,0.05);
     }
-    .hero-float { animation: heroFloat 6s ease-in-out infinite; }
-    .hero-fade  { animation: fadeUp 0.7s ease-out forwards; opacity: 0; }
 
     /* ── Section dividers ──────────────────────────────────── */
     .sep { border-color: rgba(0,0,0,0.05); }
@@ -219,36 +224,40 @@
   </nav>
 
   <!-- ─── HERO ───────────────────────────────────────────────── -->
-  <section class="bg-white min-h-screen flex flex-col justify-center px-6 pt-[52px] pb-16 text-center" id="product">
-    <div class="max-w-[1100px] mx-auto w-full">
+  <section class="bg-white min-h-screen flex flex-col justify-center px-6 pt-[52px] pb-16 text-center relative overflow-hidden" id="product">
 
-      <!-- Headline + subtitle + CTA fade in together -->
-      <div class="hero-fade">
-        <h1 class="text-5xl md:text-6xl font-bold leading-tight text-gray-900 tracking-tight">
-          Stop managing sales in<br>messy spreadsheets
-        </h1>
-        <p class="text-lg text-gray-500 max-w-xl mx-auto mt-6 leading-relaxed">
-          Track everything in a clear visual pipeline without switching to a complex CRM.
-        </p>
-        <div class="mt-10 flex flex-col items-center gap-3">
-          <a href="#" class="bg-black hover:bg-gray-800 hover:-translate-y-0.5 hover:shadow-lg text-white px-8 py-3 rounded-lg shadow-md transition-all duration-300 text-[15px] font-semibold inline-block">
-            Start Free Trial
-          </a>
-          <span class="text-sm text-gray-400">No credit card required</span>
-        </div>
+    <!-- Dot-grid texture -->
+    <div class="hero-dot-grid absolute inset-0 pointer-events-none"></div>
+
+    <!-- Text + CTA -->
+    <div class="max-w-[1100px] mx-auto w-full relative z-10">
+      <h1 class="text-[54px] md:text-[70px] font-bold text-[#09090b] leading-[0.95] tracking-[-0.045em] mb-6">
+        Stop managing sales<br>in messy spreadsheets
+      </h1>
+      <p class="text-[17px] text-[#71717a] leading-[1.65] max-w-[430px] mx-auto mb-9">
+        Track everything in a clear visual pipeline without switching to a complex CRM.
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3 mb-14">
+        <a href="#" class="bg-black hover:bg-gray-800 hover:-translate-y-0.5 hover:shadow-lg text-white px-8 py-3 rounded-lg shadow-md transition-all duration-300 text-[15px] font-semibold">
+          Start Free Trial
+        </a>
+        <span class="text-sm text-gray-400">No credit card required</span>
       </div>
+    </div>
 
-      <!-- Screenshot — gentle float, static soft shadow beneath -->
-      <div class="mt-14 max-w-6xl mx-auto">
+    <!-- Screenshot with radial glow + deep layered shadow -->
+    <div class="max-w-6xl mx-auto w-full px-4 sm:px-6 relative z-10">
+      <div class="relative">
+        <!-- Radial glow behind the image -->
+        <div class="absolute inset-x-0 bottom-0 top-0 pointer-events-none" style="background:radial-gradient(ellipse 70% 50% at 50% 110%, rgba(0,0,0,0.07) 0%, transparent 65%); filter:blur(24px);"></div>
         <img
           src="https://dashing-torrone-0b3dbf.netlify.app/img-pipeline.png"
-          class="hero-float w-full rounded-xl shadow-2xl relative z-10 hover:-translate-y-2 hover:shadow-[0_40px_80px_rgba(0,0,0,0.15)] transition-shadow duration-500 ease-out"
+          class="hero-screenshot-shadow w-full rounded-xl relative z-10"
           alt="Fluid CRM pipeline view"
         >
-        <div class="w-4/5 h-8 bg-black/10 blur-2xl rounded-full mx-auto opacity-40"></div>
       </div>
-
     </div>
+
   </section>
 
   <!-- ─── THREE CARDS ────────────────────────────────────────── -->
