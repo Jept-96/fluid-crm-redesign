@@ -149,8 +149,21 @@
     /* Testimonial */
     .testi-card {
       background: #fff;
-      border: 1px solid rgba(0,0,0,0.07);
-      box-shadow: 0 1px 3px rgba(0,0,0,0.03), 0 6px 24px rgba(0,0,0,0.04);
+      border: 1px solid rgba(0,0,0,0.08);
+      box-shadow:
+        0 0 0 1px rgba(0,0,0,0.03),
+        0 2px 4px  rgba(0,0,0,0.05),
+        0 8px 24px rgba(0,0,0,0.07),
+        0 24px 48px rgba(0,0,0,0.06);
+      transition: transform 0.3s cubic-bezier(0.23,1,0.32,1), box-shadow 0.3s cubic-bezier(0.23,1,0.32,1);
+    }
+    .testi-card:hover {
+      transform: translateY(-3px);
+      box-shadow:
+        0 0 0 1px rgba(0,0,0,0.03),
+        0 4px 8px  rgba(0,0,0,0.06),
+        0 16px 36px rgba(0,0,0,0.09),
+        0 36px 64px rgba(0,0,0,0.07);
     }
 
     /* Pricing */
@@ -500,19 +513,14 @@
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
 
-        <!-- Testimonial 1 -->
-        <div class="testi-card rounded-[14px] p-8 flex flex-col gap-6">
-          <div class="flex gap-0.5">
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="#09090b"><path d="M7 0.5l1.6 3.3 3.6.52-2.6 2.54.61 3.6L7 8.6 3.79 10.46l.61-3.6L2 4.32l3.6-.52L7 0.5z"/></svg>
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="#09090b"><path d="M7 0.5l1.6 3.3 3.6.52-2.6 2.54.61 3.6L7 8.6 3.79 10.46l.61-3.6L2 4.32l3.6-.52L7 0.5z"/></svg>
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="#09090b"><path d="M7 0.5l1.6 3.3 3.6.52-2.6 2.54.61 3.6L7 8.6 3.79 10.46l.61-3.6L2 4.32l3.6-.52L7 0.5z"/></svg>
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="#09090b"><path d="M7 0.5l1.6 3.3 3.6.52-2.6 2.54.61 3.6L7 8.6 3.79 10.46l.61-3.6L2 4.32l3.6-.52L7 0.5z"/></svg>
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="#09090b"><path d="M7 0.5l1.6 3.3 3.6.52-2.6 2.54.61 3.6L7 8.6 3.79 10.46l.61-3.6L2 4.32l3.6-.52L7 0.5z"/></svg>
-          </div>
-          <p class="text-[16px] text-[#09090b] leading-[1.7] flex-1">"I switched from a spreadsheet I'd been using for two years. Within a week Fluid had replaced it completely. The pipeline view makes it so obvious where each deal stands — I spend less time thinking about what to do next and more time actually doing it."</p>
-          <div class="flex items-center gap-3 pt-4 border-t border-[rgba(0,0,0,0.06)]">
-            <div class="w-9 h-9 rounded-full bg-[#e8e8ec] flex items-center justify-center flex-shrink-0">
-              <span class="text-[12px] font-semibold text-[#71717a]">SL</span>
+        <!-- Testimonial 1 — updated treatment -->
+        <div class="testi-card rounded-[14px] p-8 flex flex-col gap-6 relative overflow-hidden">
+          <!-- Decorative quote mark -->
+          <div class="absolute top-4 right-5 text-[110px] leading-none font-bold select-none pointer-events-none" style="color:#ebebee;font-family:Georgia,'Times New Roman',serif;">"</div>
+          <p class="text-[16px] text-[#09090b] leading-[1.7] flex-1 relative z-10">I switched from a spreadsheet I'd been using for two years. Within a week Fluid had replaced it completely. The pipeline view makes it so obvious where each deal stands — I spend less time thinking about what to do next and more time actually doing it.</p>
+          <div class="flex items-center gap-3 pt-4 border-t border-[rgba(0,0,0,0.06)] relative z-10">
+            <div class="w-10 h-10 rounded-full bg-[#1a1a22] flex items-center justify-center flex-shrink-0">
+              <span class="text-[11px] font-semibold text-white tracking-wide">SL</span>
             </div>
             <div>
               <div class="text-[13px] font-semibold text-[#09090b]">Sarah L.</div>
