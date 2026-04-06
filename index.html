@@ -234,6 +234,83 @@
     /* Responsive image overflow clip for hero */
     .hero-screenshot-wrap { position: relative; max-width: 1140px; margin: 0 auto; }
 
+    /* ─── INLINE UI MOCKUPS ─────────────────────────────────────── */
+    .mock-ui { background:#fff; font-family:'Inter',-apple-system,sans-serif; overflow:hidden; user-select:none; }
+    .mock-topbar { padding:10px 16px; border-bottom:1px solid rgba(0,0,0,0.07); display:flex; align-items:center; justify-content:space-between; }
+    .mock-topbar-title { font-size:12px; font-weight:600; color:#09090b; letter-spacing:-0.01em; }
+    .mock-btn-sm { font-size:11px; font-weight:500; color:#fff; background:#09090b; padding:4px 10px; border-radius:5px; border:none; cursor:default; }
+    .mock-btn-sm-outline { font-size:11px; font-weight:500; color:#09090b; background:#fff; padding:4px 10px; border-radius:5px; border:1px solid rgba(0,0,0,0.12); cursor:default; }
+
+    /* Kanban */
+    .mock-kanban { display:flex; gap:8px; padding:12px; background:#f8f8fa; min-height:220px; }
+    .mock-kanban-col { flex:1; min-width:0; }
+    .mock-col-head { display:flex; align-items:center; justify-content:space-between; margin-bottom:7px; }
+    .mock-col-name { font-size:10px; font-weight:600; color:#71717a; letter-spacing:0.04em; text-transform:uppercase; }
+    .mock-col-count { font-size:10px; color:#a1a1aa; background:rgba(0,0,0,0.06); padding:1px 6px; border-radius:8px; }
+    .mock-deal-card { background:#fff; border:1px solid rgba(0,0,0,0.07); border-radius:7px; padding:9px 10px; margin-bottom:6px; box-shadow:0 1px 3px rgba(0,0,0,0.04); }
+    .mock-deal-name { font-size:11px; font-weight:600; color:#09090b; margin-bottom:2px; }
+    .mock-deal-co { font-size:10px; color:#a1a1aa; margin-bottom:6px; }
+    .mock-deal-foot { display:flex; align-items:center; justify-content:space-between; }
+    .mock-deal-val { font-size:11px; font-weight:600; color:#09090b; }
+    .mock-deal-av { width:18px; height:18px; border-radius:50%; background:#e8e8ec; display:flex; align-items:center; justify-content:center; font-size:8px; font-weight:700; color:#71717a; }
+    .mock-tag { display:inline-block; font-size:9px; font-weight:600; padding:2px 6px; border-radius:8px; }
+    .mock-tag.green { background:#f0faf5; color:#4caf82; }
+    .mock-tag.amber { background:#fdf8ed; color:#d4a22a; }
+    .mock-tag.gray  { background:#f5f5f7; color:#a1a1aa; }
+    .mock-tag.blue  { background:#eff6ff; color:#3b82f6; }
+
+    /* Metrics */
+    .mock-metrics { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; padding:12px; background:#f8f8fa; }
+    .mock-metric { background:#fff; border:1px solid rgba(0,0,0,0.07); border-radius:8px; padding:10px 12px; box-shadow:0 1px 3px rgba(0,0,0,0.03); }
+    .mock-metric-lbl { font-size:9px; font-weight:600; color:#a1a1aa; letter-spacing:0.05em; text-transform:uppercase; margin-bottom:5px; }
+    .mock-metric-val { font-size:18px; font-weight:600; color:#09090b; letter-spacing:-0.03em; line-height:1; margin-bottom:2px; }
+    .mock-metric-sub { font-size:9px; color:#4caf82; font-weight:500; }
+
+    /* Table */
+    .mock-tbl { width:100%; border-collapse:collapse; }
+    .mock-tbl th { font-size:10px; font-weight:600; color:#a1a1aa; text-align:left; padding:8px 12px; border-bottom:1px solid rgba(0,0,0,0.06); letter-spacing:0.04em; text-transform:uppercase; }
+    .mock-tbl td { font-size:11px; color:#09090b; padding:7px 12px; border-bottom:1px solid rgba(0,0,0,0.04); }
+    .mock-tbl td.m { color:#9897a0; }
+
+    /* Activity */
+    .mock-act-item { display:flex; gap:10px; padding:9px 14px; border-bottom:1px solid rgba(0,0,0,0.04); align-items:flex-start; }
+    .mock-dot { width:7px; height:7px; border-radius:50%; margin-top:3px; flex-shrink:0; }
+    .mock-dot.g { background:#4caf82; } .mock-dot.p { background:#a78bfa; } .mock-dot.b { background:#60a5fa; } .mock-dot.a { background:#f59e0b; }
+    .mock-act-txt { font-size:11px; color:#09090b; line-height:1.5; flex:1; }
+    .mock-act-txt span { color:#a1a1aa; }
+    .mock-act-time { font-size:10px; color:#a1a1aa; flex-shrink:0; }
+
+    /* Toggles */
+    .mock-tog-row { display:flex; align-items:center; justify-content:space-between; padding:11px 14px; border-bottom:1px solid rgba(0,0,0,0.04); }
+    .mock-tog-info {}
+    .mock-tog-lbl { font-size:12px; font-weight:500; color:#09090b; }
+    .mock-tog-desc { font-size:10px; color:#a1a1aa; margin-top:1px; }
+    .mock-tog { width:32px; height:18px; border-radius:9px; background:#09090b; flex-shrink:0; position:relative; }
+    .mock-tog::after { content:''; position:absolute; width:14px; height:14px; border-radius:50%; background:#fff; top:2px; right:2px; }
+    .mock-tog.off { background:#e4e4e7; } .mock-tog.off::after { right:auto; left:2px; }
+
+    /* Form */
+    .mock-form-row { padding:10px 14px; }
+    .mock-form-lbl { font-size:10px; font-weight:600; color:#71717a; margin-bottom:4px; }
+    .mock-form-input { width:100%; background:#f9f9fb; border:1px solid rgba(0,0,0,0.09); border-radius:6px; padding:7px 10px; font-size:12px; color:#09090b; box-sizing:border-box; }
+    .mock-form-input.ph { color:#a1a1aa; }
+
+    /* Tasks */
+    .mock-task { display:flex; align-items:center; gap:10px; padding:9px 14px; border-bottom:1px solid rgba(0,0,0,0.04); }
+    .mock-cb { width:15px; height:15px; border-radius:4px; border:1.5px solid rgba(0,0,0,0.15); flex-shrink:0; display:flex; align-items:center; justify-content:center; }
+    .mock-cb.chk { background:#09090b; border-color:#09090b; }
+    .mock-task-txt { font-size:11px; color:#09090b; flex:1; }
+    .mock-task-txt.done { text-decoration:line-through; color:#a1a1aa; }
+    .mock-task-due { font-size:10px; color:#a1a1aa; }
+    .mock-task-due.red { color:#ef4444; }
+
+    /* Forecast bars */
+    .mock-fc-row { display:flex; align-items:center; gap:10px; padding:8px 14px; }
+    .mock-fc-lbl { font-size:10px; color:#71717a; width:55px; flex-shrink:0; }
+    .mock-fc-track { flex:1; height:8px; background:rgba(0,0,0,0.06); border-radius:4px; overflow:hidden; }
+    .mock-fc-bar { height:100%; border-radius:4px; background:#09090b; }
+    .mock-fc-val { font-size:11px; font-weight:600; color:#09090b; width:52px; text-align:right; flex-shrink:0; }
+
     /* Feature modal */
     .feat-modal-overlay {
       position: fixed;
@@ -335,11 +412,41 @@
 
       <!-- Screenshot with resting tilt — hover lifts upright -->
       <div class="hero-img-wrap">
-        <img
-          src="https://placehold.co/1280x720/f4f5f8/c0c4ce?font=inter&text=Pipeline+View"
-          class="w-full block"
-          alt="Pipeflow pipeline view"
-        >
+        <div class="mock-ui">
+          <div class="mock-topbar">
+            <div class="flex items-center gap-3">
+              <span class="mock-topbar-title">Sales Pipeline</span>
+              <span class="mock-tag green">Q2 2026</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <button class="mock-btn-sm-outline">Filter</button>
+              <button class="mock-btn-sm">+ Add Deal</button>
+            </div>
+          </div>
+          <div class="mock-kanban">
+            <div class="mock-kanban-col">
+              <div class="mock-col-head"><span class="mock-col-name">Lead</span><span class="mock-col-count">4</span></div>
+              <div class="mock-deal-card"><div class="mock-deal-name">Acorn Studio</div><div class="mock-deal-co">acornstudio.com</div><div class="mock-deal-foot"><span class="mock-deal-val">€4,200</span><div class="mock-deal-av">JL</div></div></div>
+              <div class="mock-deal-card"><div class="mock-deal-name">Greenfield Co.</div><div class="mock-deal-co">greenfield.io</div><div class="mock-deal-foot"><span class="mock-deal-val">€8,500</span><div class="mock-deal-av">MR</div></div></div>
+              <div class="mock-deal-card"><div class="mock-deal-name">Horizon Labs</div><div class="mock-deal-co">horizonlabs.co</div><div class="mock-deal-foot"><span class="mock-deal-val">€2,900</span><div class="mock-deal-av">SK</div></div></div>
+            </div>
+            <div class="mock-kanban-col">
+              <div class="mock-col-head"><span class="mock-col-name">Qualified</span><span class="mock-col-count">3</span></div>
+              <div class="mock-deal-card"><div class="mock-deal-name">Maple & Co</div><div class="mock-deal-co">mapleandco.com</div><div class="mock-deal-foot"><span class="mock-deal-val">€12,000</span><div class="mock-deal-av">TW</div></div></div>
+              <div class="mock-deal-card"><div class="mock-deal-name">Bravo Digital</div><div class="mock-deal-co">bravodigital.com</div><div class="mock-deal-foot"><span class="mock-deal-val">€6,750</span><div class="mock-deal-av">AK</div></div></div>
+            </div>
+            <div class="mock-kanban-col">
+              <div class="mock-col-head"><span class="mock-col-name">Proposal</span><span class="mock-col-count">2</span></div>
+              <div class="mock-deal-card"><div class="mock-deal-name">Vantage Group</div><div class="mock-deal-co">vantagegroup.io</div><div class="mock-deal-foot"><span class="mock-deal-val">€18,000</span><div class="mock-deal-av">PD</div></div></div>
+              <div class="mock-deal-card"><div class="mock-deal-name">Luma Creative</div><div class="mock-deal-co">lumacreative.co</div><div class="mock-deal-foot"><span class="mock-deal-val">€9,200</span><div class="mock-deal-av">NR</div></div></div>
+            </div>
+            <div class="mock-kanban-col">
+              <div class="mock-col-head"><span class="mock-col-name">Won</span><span class="mock-col-count">5</span></div>
+              <div class="mock-deal-card" style="border-left:3px solid #4caf82;"><div class="mock-deal-name">Orbit Ventures</div><div class="mock-deal-co">orbitventures.com</div><div class="mock-deal-foot"><span class="mock-deal-val">€22,000</span><span class="mock-tag green">Won</span></div></div>
+              <div class="mock-deal-card" style="border-left:3px solid #4caf82;"><div class="mock-deal-name">Peak Partners</div><div class="mock-deal-co">peakpartners.io</div><div class="mock-deal-foot"><span class="mock-deal-val">€15,500</span><span class="mock-tag green">Won</span></div></div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -363,7 +470,19 @@
             <div class="text-[13px] text-[#71717a] leading-[1.65]">Spreadsheets get messy as columns grow. Pipeflow gives you a visual board where every deal has a stage, value and a clear next step.</div>
           </div>
           <div class="overflow-hidden bg-[#f8f8fa] flex-1" style="border-top:1px solid rgba(0,0,0,0.06);" class="md:border-top-0 md:border-left">
-            <img src="https://placehold.co/1280x720/f4f5f8/c0c4ce?font=inter&text=Dashboard" class="w-full block" alt="Dashboard">
+            <div class="mock-ui">
+              <div class="mock-metrics" style="grid-template-columns:repeat(2,1fr);">
+                <div class="mock-metric"><div class="mock-metric-lbl">Pipeline</div><div class="mock-metric-val">€94k</div><div class="mock-metric-sub">↑ 12% this month</div></div>
+                <div class="mock-metric"><div class="mock-metric-lbl">Active Deals</div><div class="mock-metric-val">14</div><div class="mock-metric-sub">3 closing soon</div></div>
+                <div class="mock-metric"><div class="mock-metric-lbl">Closing</div><div class="mock-metric-val">€31k</div><div class="mock-metric-sub">this month</div></div>
+                <div class="mock-metric"><div class="mock-metric-lbl">Avg Deal</div><div class="mock-metric-val">€6.7k</div><div class="mock-metric-sub">↑ from €5.2k</div></div>
+              </div>
+              <div style="padding:0 12px 12px;">
+                <div style="font-size:10px;font-weight:600;color:#a1a1aa;letter-spacing:0.05em;text-transform:uppercase;padding:8px 0 6px;">Recent Activity</div>
+                <div class="mock-act-item" style="padding:7px 0;"><span class="mock-dot g"></span><span class="mock-act-txt">Deal <b>Vantage Group</b> moved to Proposal</span><span class="mock-act-time">2m</span></div>
+                <div class="mock-act-item" style="padding:7px 0;border:none;"><span class="mock-dot p"></span><span class="mock-act-txt">Note added to <b>Maple & Co</b></span><span class="mock-act-time">1h</span></div>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -371,7 +490,14 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div class="card-lifted rounded-[14px] overflow-hidden flex flex-col">
             <div class="overflow-hidden bg-[#f8f8fa]" style="border-bottom:1px solid rgba(0,0,0,0.06);">
-              <img src="https://placehold.co/1280x720/f4f5f8/c0c4ce?font=inter&text=Reminders" class="w-full block" alt="Set reminder">
+              <div class="mock-ui">
+                <div class="mock-topbar"><span class="mock-topbar-title">Today's Reminders</span><span class="mock-tag amber">3 due</span></div>
+                <div class="mock-task"><div class="mock-cb chk"><svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2 4-4" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg></div><span class="mock-task-txt done">Follow up — Orbit Ventures</span><span class="mock-task-due">Done</span></div>
+                <div class="mock-task"><div class="mock-cb"></div><span class="mock-task-txt">Call back — Maple & Co</span><span class="mock-task-due red">Today</span></div>
+                <div class="mock-task"><div class="mock-cb"></div><span class="mock-task-txt">Send proposal — Vantage Group</span><span class="mock-task-due red">Today</span></div>
+                <div class="mock-task"><div class="mock-cb"></div><span class="mock-task-txt">Check in — Bravo Digital</span><span class="mock-task-due">Tomorrow</span></div>
+                <div class="mock-task" style="border:none;"><div class="mock-cb"></div><span class="mock-task-txt">Demo call — Horizon Labs</span><span class="mock-task-due">Apr 9</span></div>
+              </div>
             </div>
             <div class="p-5 flex flex-col gap-1.5">
               <div class="text-[13px] font-semibold text-[#09090b]">Never miss a follow-up</div>
@@ -380,7 +506,14 @@
           </div>
           <div class="card-lifted rounded-[14px] overflow-hidden flex flex-col">
             <div class="overflow-hidden bg-[#f8f8fa]" style="border-bottom:1px solid rgba(0,0,0,0.06);">
-              <img src="https://placehold.co/1280x720/f4f5f8/c0c4ce?font=inter&text=New+Deal" class="w-full block" alt="Create deal">
+              <div class="mock-ui">
+                <div class="mock-topbar"><span class="mock-topbar-title">New Deal</span><button class="mock-btn-sm">Save</button></div>
+                <div class="mock-form-row"><div class="mock-form-lbl">Deal name</div><div class="mock-form-input">Summit Agency</div></div>
+                <div class="mock-form-row"><div class="mock-form-lbl">Company</div><div class="mock-form-input ph">summitagency.com</div></div>
+                <div class="mock-form-row"><div class="mock-form-lbl">Value</div><div class="mock-form-input">€ 7,500</div></div>
+                <div class="mock-form-row"><div class="mock-form-lbl">Stage</div><div class="mock-form-input ph">Qualified ▾</div></div>
+                <div class="mock-form-row"><div class="mock-form-lbl">Contact</div><div class="mock-form-input ph">Anna Simmons</div></div>
+              </div>
             </div>
             <div class="p-5 flex flex-col gap-1.5">
               <div class="text-[13px] font-semibold text-[#09090b]">Start tracking in minutes</div>
@@ -406,7 +539,23 @@
         </div>
       </div>
       <div class="img-frame feat-img-hover">
-        <img src="https://placehold.co/1280x720/f4f5f8/c0c4ce?font=inter&text=Dashboard" class="w-full block" alt="Dashboard">
+        <div class="mock-ui">
+          <div class="mock-topbar"><span class="mock-topbar-title">Dashboard</span><div class="flex items-center gap-2"><span class="mock-tag gray">April 2026</span><button class="mock-btn-sm-outline">Export</button></div></div>
+          <div class="mock-metrics">
+            <div class="mock-metric"><div class="mock-metric-lbl">Total Pipeline</div><div class="mock-metric-val">€94k</div><div class="mock-metric-sub">↑ 12% vs last month</div></div>
+            <div class="mock-metric"><div class="mock-metric-lbl">Active Deals</div><div class="mock-metric-val">14</div><div class="mock-metric-sub">3 closing this week</div></div>
+            <div class="mock-metric"><div class="mock-metric-lbl">Overdue</div><div class="mock-metric-val" style="color:#ef4444;">2</div><div class="mock-metric-sub" style="color:#ef4444;">needs attention</div></div>
+            <div class="mock-metric"><div class="mock-metric-lbl">Avg Deal Size</div><div class="mock-metric-val">€6.7k</div><div class="mock-metric-sub">↑ from €5.2k</div></div>
+          </div>
+          <div style="padding:4px 12px 14px;">
+            <table class="mock-tbl"><thead><tr><th>Deal</th><th>Company</th><th>Value</th><th>Stage</th><th>Owner</th></tr></thead><tbody>
+              <tr><td>Vantage Group</td><td class="m">vantagegroup.io</td><td>€18,000</td><td><span class="mock-tag blue">Proposal</span></td><td class="m">PD</td></tr>
+              <tr><td>Maple & Co</td><td class="m">mapleandco.com</td><td>€12,000</td><td><span class="mock-tag amber">Qualified</span></td><td class="m">TW</td></tr>
+              <tr><td>Bravo Digital</td><td class="m">bravodigital.com</td><td>€6,750</td><td><span class="mock-tag amber">Qualified</span></td><td class="m">AK</td></tr>
+              <tr><td>Orbit Ventures</td><td class="m">orbitventures.com</td><td>€22,000</td><td><span class="mock-tag green">Won</span></td><td class="m">NR</td></tr>
+            </tbody></table>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -424,7 +573,18 @@
         </div>
       </div>
       <div class="img-frame feat-img-hover">
-        <img src="https://placehold.co/1280x720/f4f5f8/c0c4ce?font=inter&text=Activity+Log" class="w-full block" alt="Activity logging">
+        <div class="mock-ui">
+          <div class="mock-topbar"><span class="mock-topbar-title">Vantage Group</span><div class="flex items-center gap-2"><span class="mock-tag blue">Proposal</span><button class="mock-btn-sm">+ Log Activity</button></div></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid rgba(0,0,0,0.06);">
+            <div style="padding:10px 14px;border-right:1px solid rgba(0,0,0,0.06);"><div style="font-size:9px;font-weight:600;color:#a1a1aa;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:3px;">Deal Value</div><div style="font-size:20px;font-weight:600;color:#09090b;letter-spacing:-0.03em;">€18,000</div></div>
+            <div style="padding:10px 14px;"><div style="font-size:9px;font-weight:600;color:#a1a1aa;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:3px;">Contact</div><div style="font-size:12px;font-weight:500;color:#09090b;">Patricia Dunn</div><div style="font-size:10px;color:#a1a1aa;">p.dunn@vantagegroup.io</div></div>
+          </div>
+          <div class="mock-act-item"><span class="mock-dot g"></span><div class="mock-act-txt"><b>Deal moved</b> to Proposal stage</div><span class="mock-act-time">2m ago</span></div>
+          <div class="mock-act-item"><span class="mock-dot p"></span><div class="mock-act-txt"><b>Note:</b> <span>Patricia confirmed budget approved. Waiting on legal review.</span></div><span class="mock-act-time">1h ago</span></div>
+          <div class="mock-act-item"><span class="mock-dot b"></span><div class="mock-act-txt"><b>Email sent</b> — Proposal document attached</div><span class="mock-act-time">Yesterday</span></div>
+          <div class="mock-act-item"><span class="mock-dot a"></span><div class="mock-act-txt"><b>Call logged</b> — 22 min. Discussed onboarding timeline.</div><span class="mock-act-time">Apr 3</span></div>
+          <div class="mock-act-item" style="border:none;"><span class="mock-dot g"></span><div class="mock-act-txt"><b>Deal created</b> from contact Patricia Dunn</div><span class="mock-act-time">Apr 1</span></div>
+        </div>
       </div>
     </div>
   </section>
@@ -438,9 +598,17 @@
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
-        <div class="feat-card-clickable" onclick="openFeatModal('https://placehold.co/1280x720/f4f5f8/c0c4ce?font=inter&text=Contacts','3.0 Contacts','Store your contacts, automatically','Create a deal and the contact is built for you. Start from contacts if you prefer. Either way, everything stays linked and stored in one place — no duplicate entries, no copy-pasting between tools.')">
+        <div class="feat-card-clickable" onclick="openFeatModal('contacts')">
           <div class="img-frame feat-img-hover mb-6">
-            <img src="https://placehold.co/1280x720/f4f5f8/c0c4ce?font=inter&text=Contacts" class="w-full block" alt="Contacts">
+            <div class="mock-ui">
+              <div class="mock-topbar"><span class="mock-topbar-title">Contacts</span><button class="mock-btn-sm">+ New</button></div>
+              <table class="mock-tbl"><thead><tr><th>Name</th><th>Company</th><th>Status</th></tr></thead><tbody>
+                <tr><td>Patricia Dunn</td><td class="m">Vantage Group</td><td><span class="mock-tag blue">Active</span></td></tr>
+                <tr><td>Tom Walsh</td><td class="m">Maple & Co</td><td><span class="mock-tag amber">Warm</span></td></tr>
+                <tr><td>Anna Simmons</td><td class="m">Summit Agency</td><td><span class="mock-tag green">Won</span></td></tr>
+                <tr><td>Jake Lee</td><td class="m">Acorn Studio</td><td><span class="mock-tag gray">Cold</span></td></tr>
+              </tbody></table>
+            </div>
           </div>
           <p class="feat-num mb-3">3.0 Contacts</p>
           <h3 class="text-[18px] font-[560] tracking-[-0.02em] text-[#09090b] leading-[1.2] mb-2">Store your contacts, automatically</h3>
@@ -448,9 +616,21 @@
           <span class="inline-flex items-center gap-1 mt-3 text-[12px] text-[#a1a1aa]">View details <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6h7M6.5 3l3 3-3 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </div>
 
-        <div class="feat-card-clickable" onclick="openFeatModal('https://placehold.co/1280x720/f4f5f8/c0c4ce?font=inter&text=Forecast','4.0 Forecast','See how much revenue is coming in','Total pipeline value, expected revenue, deals closing this month and average deal size — all in one view. Stop guessing and start planning with real numbers.')">
+        <div class="feat-card-clickable" onclick="openFeatModal('forecast')">
           <div class="img-frame feat-img-hover mb-6">
-            <img src="https://placehold.co/1280x720/f4f5f8/c0c4ce?font=inter&text=Forecast" class="w-full block" alt="Forecast">
+            <div class="mock-ui">
+              <div class="mock-topbar"><span class="mock-topbar-title">Revenue Forecast</span><span class="mock-tag green">On track</span></div>
+              <div style="padding:10px 14px 4px;display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+                <div class="mock-metric" style="border-radius:7px;"><div class="mock-metric-lbl">Expected</div><div class="mock-metric-val" style="font-size:16px;">€31k</div><div class="mock-metric-sub">this month</div></div>
+                <div class="mock-metric" style="border-radius:7px;"><div class="mock-metric-lbl">Committed</div><div class="mock-metric-val" style="font-size:16px;">€18k</div><div class="mock-metric-sub">proposal stage</div></div>
+              </div>
+              <div style="padding:8px 14px 10px;">
+                <div class="mock-fc-row"><span class="mock-fc-lbl">Lead</span><div class="mock-fc-track"><div class="mock-fc-bar" style="width:45%;background:#e4e4e7;"></div></div><span class="mock-fc-val">€42k</span></div>
+                <div class="mock-fc-row"><span class="mock-fc-lbl">Qualified</span><div class="mock-fc-track"><div class="mock-fc-bar" style="width:65%;background:#c0c0c8;"></div></div><span class="mock-fc-val">€18k</span></div>
+                <div class="mock-fc-row"><span class="mock-fc-lbl">Proposal</span><div class="mock-fc-track"><div class="mock-fc-bar" style="width:85%;"></div></div><span class="mock-fc-val">€18k</span></div>
+                <div class="mock-fc-row"><span class="mock-fc-lbl">Won</span><div class="mock-fc-track"><div class="mock-fc-bar" style="width:40%;background:#4caf82;"></div></div><span class="mock-fc-val">€37k</span></div>
+              </div>
+            </div>
           </div>
           <p class="feat-num mb-3">4.0 Forecast</p>
           <h3 class="text-[18px] font-[560] tracking-[-0.02em] text-[#09090b] leading-[1.2] mb-2">See how much revenue is coming in</h3>
@@ -458,9 +638,16 @@
           <span class="inline-flex items-center gap-1 mt-3 text-[12px] text-[#a1a1aa]">View details <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6h7M6.5 3l3 3-3 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </div>
 
-        <div class="feat-card-clickable" onclick="openFeatModal('https://placehold.co/1280x720/f4f5f8/c0c4ce?font=inter&text=Automations','5.0 Automations','Work smart to save time and energy','Eight in-app automations handle deal creation, stage changes and time-based follow-ups. Toggle what you need and focus on real conversations instead of manual busywork.')">
+        <div class="feat-card-clickable" onclick="openFeatModal('automations')">
           <div class="img-frame feat-img-hover mb-6">
-            <img src="https://placehold.co/1280x720/f4f5f8/c0c4ce?font=inter&text=Automations" class="w-full block" alt="Automations">
+            <div class="mock-ui">
+              <div class="mock-topbar"><span class="mock-topbar-title">Automations</span><span class="mock-tag green">5 active</span></div>
+              <div class="mock-tog-row"><div class="mock-tog-info"><div class="mock-tog-lbl">Auto-create contact</div><div class="mock-tog-desc">When a new deal is added</div></div><div class="mock-tog"></div></div>
+              <div class="mock-tog-row"><div class="mock-tog-info"><div class="mock-tog-lbl">Follow-up reminder</div><div class="mock-tog-desc">3 days after last activity</div></div><div class="mock-tog"></div></div>
+              <div class="mock-tog-row"><div class="mock-tog-info"><div class="mock-tog-lbl">Stage change notify</div><div class="mock-tog-desc">Email team on deal progress</div></div><div class="mock-tog"></div></div>
+              <div class="mock-tog-row"><div class="mock-tog-info"><div class="mock-tog-lbl">Overdue alert</div><div class="mock-tog-desc">Flag deals with no activity</div></div><div class="mock-tog off"></div></div>
+              <div class="mock-tog-row" style="border:none;"><div class="mock-tog-info"><div class="mock-tog-lbl">Won deal summary</div><div class="mock-tog-desc">Weekly digest of closed deals</div></div><div class="mock-tog off"></div></div>
+            </div>
           </div>
           <p class="feat-num mb-3">5.0 Automations</p>
           <h3 class="text-[18px] font-[560] tracking-[-0.02em] text-[#09090b] leading-[1.2] mb-2">Work smart to save time and energy</h3>
@@ -800,11 +987,17 @@
   </div>
 
   <script>
-    function openFeatModal(img, num, title, desc) {
-      document.getElementById('featModalImg').src = img;
-      document.getElementById('featModalNum').textContent = num;
-      document.getElementById('featModalTitle').textContent = title;
-      document.getElementById('featModalDesc').textContent = desc;
+    const featModalData = {
+      contacts: { num:'3.0 Contacts', title:'Store your contacts, automatically', desc:'Create a deal and the contact is built for you. Start from contacts if you prefer. Either way, everything stays linked and stored in one place — no duplicate entries, no copy-pasting between tools.' },
+      forecast:  { num:'4.0 Forecast',  title:'See how much revenue is coming in',   desc:'Total pipeline value, expected revenue, deals closing this month and average deal size — all in one view. Stop guessing and start planning with real numbers.' },
+      automations:{ num:'5.0 Automations',title:'Work smart to save time and energy', desc:'Eight in-app automations handle deal creation, stage changes and time-based follow-ups. Toggle what you need and focus on real conversations instead of manual busywork.' }
+    };
+    function openFeatModal(key) {
+      const d = featModalData[key];
+      document.getElementById('featModalImg').style.display = 'none';
+      document.getElementById('featModalNum').textContent  = d.num;
+      document.getElementById('featModalTitle').textContent = d.title;
+      document.getElementById('featModalDesc').textContent  = d.desc;
       document.getElementById('featModal').classList.add('is-open');
       document.body.style.overflow = 'hidden';
     }
